@@ -1,8 +1,9 @@
-import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
 
 public class Tests {
     public static void main(String[] args) {
@@ -10,22 +11,22 @@ public class Tests {
         driver.get(" https://testpages.herokuapp.com/styled/index.html");
 
 
-        try{
-         // interactionWithTheFourthLinks(driver);
-         //   basicElementPage(driver);
-         //  attributesPage(driver);
-         //   findByLocator(driver);
+        try {
+            // interactionWithTheFourthLinks(driver);
+            //   basicElementPage(driver);
+            //  attributesPage(driver);
+            //   findByLocator(driver);
+            //  getTableDetails(driver);
 
 
-        }finally {
+        } finally {
 
-          driver.quit();
+            driver.quit();
 
         }
     }
 
-    public static void interactionWithTheFourthLinks(WebDriver driver){
-
+    public static void interactionWithTheFourthLinks(WebDriver driver) {
 
 
         WebElement firstLink = driver.findElement(By.cssSelector("#basicpagetest"));
@@ -50,7 +51,7 @@ public class Tests {
         index3Page.click();
 
 
-        WebElement fourthLink = driver.findElement(By.cssSelector("#tabletest"));
+        WebElement fourthLink = driver.findElement(By.cssSelector("#tablestest"));
         fourthLink.click();
 
         WebElement index4Page = driver.findElement(By.cssSelector(".page-navigation a"));
@@ -59,7 +60,7 @@ public class Tests {
 
     }
 
-    public static void basicElementPage (WebDriver driver){
+    public static void basicElementPage(WebDriver driver) {
 
         WebElement firstLink = driver.findElement(By.cssSelector("#basicpagetest"));
         firstLink.click();
@@ -75,7 +76,7 @@ public class Tests {
 
     }
 
-    public static void attributesPage(WebDriver driver){
+    public static void attributesPage(WebDriver driver) {
         WebElement secondLink = driver.findElement(By.id("elementattributestest"));
         secondLink.click();
 
@@ -92,7 +93,7 @@ public class Tests {
         System.out.println("nextInt before clicking button :" + dynanimAttributes.getAttribute("nextId"));
         System.out.println("custom -1 before click :" + dynanimAttributes.getAttribute("custom -1"));
 
-        WebElement addAttributeButton  = driver.findElement(By.className("styled-click-button"));
+        WebElement addAttributeButton = driver.findElement(By.className("styled-click-button"));
 
         addAttributeButton.click();
         System.out.println("nextInt after clicking button :" + dynanimAttributes.getAttribute("nextId"));
@@ -101,13 +102,13 @@ public class Tests {
 
     }
 
-    public static void findByLocator(WebDriver driver){
+    public static void findByLocator(WebDriver driver) {
         WebElement thirdLink = driver.findElement(By.xpath("//*[@id=\"findbytest\"] "));
         thirdLink.click();
 
-        WebElement locatorPage1 =driver.findElement(By.id("p1"));
-        WebElement locatorPage2 =driver.findElement(By.id("p2"));
-        WebElement locatorPage3 =driver.findElement(By.id("p3"));
+        WebElement locatorPage1 = driver.findElement(By.id("p1"));
+        WebElement locatorPage2 = driver.findElement(By.id("p2"));
+        WebElement locatorPage3 = driver.findElement(By.id("p3"));
 
         System.out.println("para 1: " + locatorPage1.getText());
         System.out.println("para 2: " + locatorPage2.getText());
@@ -132,10 +133,39 @@ public class Tests {
         System.out.println("");
 
 
+    }
+
+    public static void getTableDetails(WebDriver driver) {
+        WebElement fourthLink = driver.findElement(By.cssSelector("#tablestest"));
+        fourthLink.click();
+
+        WebElement tabelTag = driver.findElement(By.xpath("//*[@id=\"mytable\"]/tbody/tr[1]"));
+        System.out.println(tabelTag.getText());
+        System.out.println("");
 
 
+        WebElement firstRow = driver.findElement(By.xpath("//*[@id=\"mytable\"]/tbody/tr[2] "));
+        System.out.println(firstRow.getText());
+        System.out.println("");
 
+        WebElement secondRow = driver.findElement(By.xpath("//*[@id=\"mytable\"]/tbody/tr[3]"));
+        System.out.println(secondRow.getText());
+        System.out.println("");
+
+        WebElement thirdRow = driver.findElement(By.xpath("//*[@id=\"mytable\"]/tbody/tr[4]"));
+        System.out.println(thirdRow.getText());
+        System.out.println("");
+
+        WebElement fourthRow = driver.findElement(By.xpath("//*[@id=\"mytable\"]/tbody/tr[5]"));
+        System.out.println(fourthRow.getText());
+        System.out.println("");
 
 
     }
+
 }
+
+
+
+
+
